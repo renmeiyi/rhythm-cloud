@@ -1,0 +1,460 @@
+:root {
+  --primary: #d33a31;
+  --text-main: #1f1f1f;
+  --text-secondary: #8a8a8a;
+  --bg-hover: #f6f6f6;
+  --silder: #57b3ff;
+}
+
+/* ========================
+   全局重置
+======================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ========================
+   左侧 Tabs（侧边栏）
+======================== */
+.q-tabs--vertical .q-tab {
+  height: 44px;
+  padding-left: 24px;
+  margin: 4px 12px;
+  border-radius: 8px;
+  justify-content: flex-start;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.q-tabs--vertical .q-tab__content {
+  align-items: center;
+}
+
+.q-tabs--vertical .q-tab__label {
+  font-size: 16px;
+  text-align: left;
+}
+
+.q-tab {
+  color: var(--text-secondary);
+}
+
+.q-tab:hover {
+  background: var(--bg-hover);
+  color: var(--primary);
+}
+
+.q-tab--active {
+  background: rgba(211, 58, 49, 0.1);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.labelName {
+  height: 56px;
+  line-height: 56px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-main);
+  transition: all 0.5s ease;
+}
+
+.labelName:hover {
+  color: var(--primary);
+  font-size: 20px;
+}
+
+.q-separator {
+  height: 1px;
+  margin: 12px 16px;
+  background: #eee;
+}
+
+/* ========================
+   Header
+======================== */
+.q-header {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 0;
+  z-index: 1000;
+}
+
+.q-header .q-layout__shadow::after {
+  display: none !important;
+}
+
+/* ========================
+   Footer / Player
+======================== */
+.q-footer {
+  background: #000;
+  border-top: none !important;
+  padding: 0 !important;
+  z-index: 1600;
+}
+
+.q-footer .q-layout__shadow {
+  display: none !important;
+}
+
+.lyric-line {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  opacity: 0.9;
+  margin-bottom: 4px;
+}
+
+
+/* ========================
+   Toolbar
+======================== */
+.q-toolbar {
+  padding: 0 !important;
+  min-height: 60px;
+}
+
+.under-player {
+  height: 80px;
+  background: rgb(184, 27, 27);
+}
+
+/* ========================
+   Drawer & 遮罩
+======================== */
+.frost-mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+}
+
+.q-drawer--left {
+  z-index: 1100;
+}
+
+.q-drawer--right {
+  z-index: 4000;
+}
+
+/* ========================
+   搜索框
+======================== */
+.search-wrapper {
+  position: relative;
+  width: 320px;
+  margin-left: 12px;
+  z-index: 3000;
+}
+
+.search-input {
+  width: 180px;
+  transition: width 0.3s ease;
+}
+
+.search-wrapper:focus-within .search-input {
+  width: 320px;
+}
+
+.search-input .q-field__control {
+  background: #f1f1f1;
+  border-radius: 18px;
+  height: 32px;
+}
+
+.search-input.q-field--focused .q-field__control {
+  background: #fff;
+  box-shadow: 0 0 0 1px var(--primary) inset;
+}
+
+.search-input.q-field__control::before,
+.search-input.q-field__control::after {
+  display: none;
+}
+
+/* ========================
+   搜索面板（下拉弹出）
+======================== */
+.search-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  padding: 8px 0;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  max-height: 360px;
+  overflow-y: auto;
+
+  /* 动画初始态 */
+  opacity: 0;
+  transform: translateY(-6px) scale(0.98);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+
+  pointer-events: none;
+}
+
+/* 显示态（通过 v-if 或 class） */
+.search-panel {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* ========================
+   搜索项
+======================== */
+.search-item {
+  padding: 10px 16px;
+  font-size: 14px;
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.search-item:hover {
+  background: #f6f6f6;
+}
+
+.search-item.title {
+  font-size: 12px;
+  color: var(--text-secondary);
+  cursor: default;
+}
+
+.search-item.title:hover {
+  background: transparent;
+}
+
+/* 热搜高亮 */
+.search-item.hot .word {
+  font-weight: 500;
+}
+
+/* ========================
+   滚动条
+======================== */
+.search-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-panel::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+}
+/* ========================
+   🎵 原生网易云风格进度条
+======================== */
+.netease-progress {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  background: rgb(184, 27, 27);
+  outline: none;
+  cursor: pointer;
+  display: block;
+  --progress:0%;
+  position: relative;
+  border-radius: 4px;
+}
+
+/* 已播放（WebKit） */
+.netease-progress::-webkit-slider-runnable-track {
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    var(--silder) var(--progress, 0%),
+    rgba(255, 255, 255, 0.3) 0%
+  );
+}
+
+/* 拖动圆点 */
+.netease-progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  background: var(--silder);
+  border-radius: 50%;
+  margin-top: -4px;
+  opacity: 1;
+  transition: opacity 0.15s ease;
+}
+
+/* hover 显示圆点 */
+/* .netease-progress:hover::-webkit-slider-thumb {
+  opacity: 1;
+} */
+
+/* Firefox */
+.netease-progress::-moz-range-track {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.netease-progress::-moz-range-progress {
+  background: var(--primary);
+  height: 2px;
+}
+
+.netease-progress::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background: var(--primary);
+  border: none;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.netease-progress:hover::-moz-range-thumb {
+  opacity: 1;
+}
+
+/* ===== 控制栏整体 ===== */
+.under-player {
+  height: 90px;
+  padding: 0 12px;
+  /* background: linear-gradient(
+    to top,
+    rgba(20, 20, 20, 0.95),
+    rgba(20, 20, 20, 0.85)
+  ); */
+  color: #fff;
+}
+
+/* ===== 封面 ===== */
+.song-cover {
+  overflow: hidden;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease;
+}
+
+.song-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 播放时轻微放大 */
+.song-cover:hover {
+  transform: scale(1.05);
+}
+
+/* 没封面时 */
+.no-cover {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #444, #222);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+/* ===== 歌曲信息区域 ===== */
+.song-info {
+  width: 260px;
+  margin: 0 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* 歌名 */
+.song-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.song-name-left{
+  font-size: 15px;
+  color: var(--text-main) !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 作者 */
+.song-artist {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== 歌词（重点） ===== */
+.current-lyric {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--silder);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  /* 呼吸感 */
+  animation: lyricFade 5s ease-in-out infinite;
+}
+
+/* 歌词呼吸动画 */
+/* @keyframes lyricFade {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+} */
+/* ===== 歌词外层（裁剪容器） ===== */
+.lyric-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;          /* 右边隐藏 */
+  margin-top: 6px;
+  padding-left: 12px;
+}
+
+/* ===== 歌词本体 ===== */
+.current-lyric {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 13px;
+  color: var(--silder);
+  line-height: 1.3;
+
+  /* 滚动动画 */
+  animation: lyric-scroll 20s linear infinite;
+}
+
+/* ===== 滚动动画 ===== */
+@keyframes lyric-scroll {
+  100% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

@@ -1,0 +1,357 @@
+ 
+.section-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+  margin-left: 32px;
+  margin-top: -20px
+}
+
+.categoryList-card {
+  width: 180px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.categoryList-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+.categoryList-card:nth-child(6n + 1):hover { background: #FFE4E6; }
+.categoryList-card:nth-child(6n + 2):hover { background: #E0F2FE; }
+.categoryList-card:nth-child(6n + 3):hover { background: #ECFEFF; }
+.categoryList-card:nth-child(6n + 4):hover { background: #F0FDF4; }
+.categoryList-card:nth-child(6n + 5):hover { background: #FEFCE8; }
+.categoryList-card:nth-child(6n):hover     { background: #FFF7ED; }
+
+.categoryList-card .category {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 8px;
+}
+
+.categoryList-card .name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+
+.categoryList-card .count {
+  font-size: 12px;
+  color: #888;
+  margin-top: 6px;
+}
+
+.categoryList-card .hot {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #d33a31;
+}
+.section-content-highqualityList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  margin: 10px 32px ;
+}
+.highqualityList-card {
+  position: relative;
+  height: 300px; /* 卡片整体变大 */
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.highqualityList-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+}
+
+.highqualityList-card .cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(.22,1,.36,1);
+}
+
+.highqualityList-card:hover .cover {
+  transform: scale(1.1);
+}
+
+.highqualityList-card .category {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.highqualityList-card .name {
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+.highqualityList-card .hot {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 14px;
+}
+.section-header {
+  margin-bottom: 24px;
+  margin-left: 35px;
+}
+
+.section-header h5 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.section-header .sub {
+  font-size: 13px;
+  color: #888;
+}
+/* hover 向上弹出的信息层 */
+.highqualityList-card .info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 18px 16px 20px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.88) 0%,
+    rgba(0, 0, 0, 0.65) 40%,
+    rgba(0, 0, 0, 0.25) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+
+  color: #fff;
+
+  transform: translateY(100%);
+  transition: transform 0.35s ease;
+}
+
+.highqualityList-card:hover .info {
+  transform: translateY(0);
+}
+.highqualityList-card .info .name {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.highqualityList-card .info .desc {
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0.9;
+
+  /* 最多显示 2 行 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.artistList-card {
+  display: inline-block;
+  height: 100px; /* 卡片整体变大 */
+  width: 100px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  transition: transform .3s ease, box-shadow .3s ease;
+  margin-top: 20px;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.artistList-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+}
+
+.artistList-card .cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.6s cubic-bezier(.22,1,.36,1);
+}
+
+.artistList-card:hover .cover {
+  transform: scale(1.1);
+}
+.artistList-card .name{
+  font-size: 12px;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 600;
+}
+.section-content-topList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  margin: 10px 32px ;
+}
+.topList-card {
+  position: relative;
+  height: 300px; /* 卡片整体变大 */
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.topList-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+}
+
+.topList-card .cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(.22,1,.36,1);
+}
+
+.topList-card:hover .cover {
+  transform: scale(1.1);
+}
+
+.topList-card .category {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.topList-card .name {
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+.topList-card .hot {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 14px;
+}
+/* hover 向上弹出的信息层 */
+.topList-card .info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 18px 16px 20px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.88) 0%,
+    rgba(0, 0, 0, 0.65) 40%,
+    rgba(0, 0, 0, 0.25) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+
+  color: #fff;
+
+  transform: translateY(100%);
+  transition: transform 0.35s ease;
+}
+
+.topList-card:hover .info {
+  transform: translateY(0);
+}
+.topList-card .info .name {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.topList-card .info .desc {
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0.9;
+
+  /* 最多显示 2 行 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.playlist-tabs {
+  margin: 8px 12px 12px;
+}
+
+.playlist-tabs .q-tab {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.q-tab--active {
+  font-weight: 600;
+}
+.q-panel > div{
+  background-color: #fff;
+}
+
+
+.section-categoryList{
+  display: grid;
+  border-radius: 18px;
+  background-color: #fff;
+  margin-left: 32px;
+  margin-right: 32px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.section-highqualityList{
+  display: grid;
+  border-radius: 18px;
+  background-color: #fff;
+  margin-top: 40px;
+  margin-left: 32px;
+  margin-right: 32px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.section-artistList{
+  display: grid;
+  border-radius: 18px;
+  background-color: #fff;
+  margin-top: 40px;
+  margin-left: 32px;
+  margin-right: 32px;
+  padding:20px 20px;
+}

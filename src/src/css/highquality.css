@@ -1,0 +1,177 @@
+/* 页面整体 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.q-page {
+  background: #f5f5f7;
+  padding: 20px;
+}
+
+/* loading */
+.loading-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+/* empty */
+.empty {
+  text-align: center;
+  color: #999;
+  padding: 40px 0;
+}
+
+/* 外层 */
+.netease-wrapper {
+  width: 100%;
+  padding: 0 16px;
+}
+
+/* 表格整体 */
+.netease-table {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  overflow: hidden;
+}
+
+/* 表头 */
+.table-header {
+  display: flex;
+  align-items: center;
+  height: 52px;
+  background: #fafafa;
+  border-bottom: 1px solid #e6e6e6;
+  font-size: 13px;
+  color: #999;
+  font-weight: 500;
+  padding: 0 16px;
+}
+
+/* 行 */
+.table-row {
+  display: flex;
+  align-items: center;
+  min-height: 76px;     
+  cursor: pointer;
+  transition: background 0.2s ease;
+  padding: 0 16px;
+}
+
+.table-row:hover {
+  background: #f7f7f7;
+}
+
+/* 公共列 */
+.col {
+  padding: 0 16px;
+}
+
+/* 序号列 */
+.col.index {
+  width: 56px;
+  text-align: center;
+  color: #999;
+  flex-shrink: 0;
+}
+
+/* 主信息列 */
+.col.title {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;           
+  overflow: hidden;
+}
+
+/* 歌名 */
+.song-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #222;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 歌手 */
+.song-artist {
+  font-size: 13px;
+  color: #888;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 行分割线 */
+.table-row + .table-row {
+  border-top: 1px solid #f0f0f0;
+}
+
+.playlist-header {
+  display: flex;
+  gap: 24px;              /* 图片和信息之间间距 */
+  align-items: flex-start; /* 顶部对齐 */
+  margin-bottom: 24px;
+}
+
+.cover-wrapper {
+  width: 320px;
+  height: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  flex-shrink: 0;         /* 固定宽度不收缩 */
+  transition: transform .4s ease;
+}
+
+.cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  
+}
+
+.cover-wrapper:hover{
+    transform: translateY(-5px);
+}
+
+.info {
+  flex: 1;                /* 占据剩余空间 */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;              /* 各信息行垂直间距 */
+}
+
+.info .title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #222;
+}
+
+.info .tags {
+  font-size: 14px;
+  color: #999;
+}
+
+.info .description {
+  font-size: 14px;
+  color: #555;
+  display: -webkit-box;        /* 必须结合下面两行 */
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;       /* 显示 3 行，多余部分显示省略号 */
+  overflow: hidden;
+  text-overflow: ellipsis;     /* 多余文字显示 ... */
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.info .creator {
+  font-size: 13px;
+  color: #888;
+}
