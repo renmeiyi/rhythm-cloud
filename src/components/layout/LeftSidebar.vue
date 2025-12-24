@@ -8,7 +8,7 @@
     behavior="desktop"
   >
     <q-tabs vertical no-indicator bordered>
-      <q-item-label header class="labelName">
+      <q-item-label header class="labelName" @click="$router.push({ name: 'recommend' })">
         Rhythm Cloud
       </q-item-label>
 

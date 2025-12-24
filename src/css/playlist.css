@@ -175,3 +175,6 @@
   font-size: 13px;
   color: #888;
 }
+.playlist-page {
+  background-color: var(--bg-bottom);
+}

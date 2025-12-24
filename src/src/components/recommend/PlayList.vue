@@ -1,3 +1,4 @@
+<!-- 歌单详情 -->
 <template>
   <q-page class="playlist-page" style="background-color: #f8f8f8;">
 
@@ -57,7 +58,7 @@
   import { ref,computed,onMounted } from 'vue'
   import { getPlaylist } from '../../api/playlist'
   import { usePlayListStore } from '../../stores/playlist'
-  import '../../css/highquality.css'
+  import '../../css/playlist.css'
 
   const playList = ref([])
   const playListStore = usePlayListStore()

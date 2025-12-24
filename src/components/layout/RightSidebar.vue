@@ -1,7 +1,7 @@
 <template>
   <q-drawer v-model="drawer" side="right" bordered overlay :width="400">
     <q-toolbar>
-      <div class="text-subtitle1" style="padding-left: 10px;">
+      <div class="text-subtitle1">
         播放列表
       </div>
       <q-space />
@@ -32,7 +32,7 @@
           icon="delete"
           color="negative"
           @click.stop="removeSong(item)"
-          style="left: 12px;"
+          class="right-del"
         />
       </q-item>
     </q-list>

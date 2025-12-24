@@ -103,7 +103,7 @@
           <div class="info">
             <div class="name">{{ item.name }}</div>
           </div>
-        </div> https://github.com/qyhqiu/kuwoMusicApi
+        </div>
       </div>
     </div>
   </q-page>

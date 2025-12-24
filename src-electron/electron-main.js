@@ -1,65 +1,84 @@
-import { app, BrowserWindow } from 'electron'
-import path from 'node:path'
-import os from 'node:os'
-import { fileURLToPath } from 'node:url'
+// electron-main.js (CommonJS)
+const { app, BrowserWindow, ipcMain } = require('electron');
+const path = require('path');
+const os = require('os');
 
-// needed in case process is undefined under Linux
-const platform = process.platform || os.platform()
+// 兼容 Linux 下 process 未定义的情况
+const platform = process.platform || os.platform();
 
-const currentDir = fileURLToPath(new URL('.', import.meta.url))
+// 当前目录
+const currentDir = __dirname;
 
-let mainWindow
+let mainWindow;
 
-async function createWindow () {
-  /**
-   * Initial window options
-   */
+// 创建窗口
+function createWindow() {
   mainWindow = new BrowserWindow({
-    icon: path.resolve(currentDir, 'icons/icon.png'), // tray icon
+    icon: path.resolve(currentDir, 'icons/icon.png'), // 托盘图标
     width: 1000,
     height: 600,
     useContentSize: true,
+    autoHideMenuBar: true,
+    frame: false,
     webPreferences: {
       contextIsolation: true,
-      // More info: https://v2.quasar.dev/quasar-cli-vite/developing-electron-apps/electron-preload-script
       preload: path.resolve(
         currentDir,
-        path.join(process.env.QUASAR_ELECTRON_PRELOAD_FOLDER, 'electron-preload' + process.env.QUASAR_ELECTRON_PRELOAD_EXTENSION)
+        path.join(
+          process.env.QUASAR_ELECTRON_PRELOAD_FOLDER,
+          'electron-preload' + process.env.QUASAR_ELECTRON_PRELOAD_EXTENSION
+        )
       )
     }
-  })
+  });
 
-  if (process.env.DEV) {
-    await mainWindow.loadURL(process.env.APP_URL)
-  } else {
-    await mainWindow.loadFile('index.html')
-  }
-
-  if (process.env.DEBUGGING) {
-    // if on DEV or Production with debug enabled
-    mainWindow.webContents.openDevTools()
-  } else {
-    // we're on production; no access to devtools pls
-    mainWindow.webContents.on('devtools-opened', () => {
-      mainWindow.webContents.closeDevTools()
-    })
-  }
+    mainWindow.loadURL(process.env.APP_URL);
+  // if (process.env.DEV) {
+  //   if (process.env.DEBUGGING) {
+  //     mainWindow.webContents.openDevTools();
+  //   }
+  // } else {
+  //   mainWindow.loadFile(path.join(currentDir, 'index.html'));
+  //   // 生产环境禁止打开 DevTools
+  //   mainWindow.webContents.on('devtools-opened', () => {
+  //     mainWindow.webContents.closeDevTools();
+  //   });
+  // }
 
   mainWindow.on('closed', () => {
-    mainWindow = null
-  })
+    mainWindow = null;
+  });
 }
 
-app.whenReady().then(createWindow)
+// App 初始化
+app.whenReady().then(createWindow);
 
+// Mac 特殊行为
 app.on('window-all-closed', () => {
   if (platform !== 'darwin') {
-    app.quit()
+    app.quit();
   }
-})
-
+});
 app.on('activate', () => {
-  if (mainWindow === null) {
-    createWindow()
+  if (!mainWindow) {
+    createWindow();
   }
-})
+});
+
+// ------------------- IPC 窗口控制 -------------------
+ipcMain.on('window-minimize', () => {
+  if (mainWindow) mainWindow.minimize();
+});
+
+ipcMain.on('window-maximize', () => {
+  if (!mainWindow) return;
+  if (mainWindow.isMaximized()) {
+    mainWindow.unmaximize();
+  } else {
+    mainWindow.maximize();
+  }
+});
+
+ipcMain.on('window-close', () => {
+  if (mainWindow) mainWindow.close();
+});

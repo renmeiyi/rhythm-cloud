@@ -1,5 +1,5 @@
 <template>
-  <q-page class="playlist-page" style="background-color: #f8f8f8;">
+  <q-page class="playlist-page">
 
     <!-- 固定头部 -->
     <div class="playlist-header sticky-header">
@@ -57,7 +57,7 @@
   import { ref,computed,onMounted } from 'vue'
   import { getPlaylist } from '../../api/playlist'
   import { usePlayListStore } from '../../stores/playlist'
-  import '../../css/highquality.css'
+  import '../../css/playlist.css'
 
   const playList = ref([])
   const playListStore = usePlayListStore()

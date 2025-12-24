@@ -27,3 +27,10 @@
  *   }
  * }
  */
+const { contextBridge, ipcRenderer } = require('electron')
+
+contextBridge.exposeInMainWorld('api', {
+  min: () => ipcRenderer.send('window-minimize'),
+  max: () => ipcRenderer.send('window-maximize'),
+  close: () => ipcRenderer.send('window-close')
+})

@@ -1,5 +1,5 @@
 <template>
-  <q-page class="recommend-page" style="background-color: #f8f8f8;">
+  <q-page class="recommend-page">
 
     <div class="section-categoryList">
         <!-- 标题 -->
@@ -103,7 +103,7 @@
           <div class="info">
             <div class="name">{{ item.name }}</div>
           </div>
-        </div> https://github.com/qyhqiu/kuwoMusicApi
+        </div>
       </div>
     </div>
   </q-page>
