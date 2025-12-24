@@ -558,6 +558,9 @@
 .right-del{
   left: 12px;
 }
+.text-negative{
+  color: var(--accent)!important;
+}
 .settings-panel {
   width: 420px;
   max-height: 80vh;
@@ -592,4 +595,21 @@
 .q-footer .q-layout__shadow,
 .q-footer .q-layout__shadow::after {
   display: none !important;
+}
+.player-wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1300; 
+}
+
+/* 悬浮进度条 */
+.floating-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -92px;         
+  height: 4px;
+  z-index: 3001;
 }

@@ -1,9 +1,9 @@
 <template>
-  <q-footer class="player-footer">
-
+  <!-- 播放器容器 -->
+  <div class="player-wrapper">
     <!-- 进度条 -->
     <input
-      class="netease-progress"
+      class="netease-progress floating-progress"
       type="range"
       min="0"
       :max="duration"
@@ -13,45 +13,47 @@
       @input="onProgressInput"
       @change="onProgressChange"
     />
+    <q-footer class="player-footer">
 
-    <!-- 控制栏 -->
-    <q-toolbar class="under-player">
-      <q-avatar size="70px" class="avatar-control" square>
-        <img v-if="currentSong?.cover" :src="currentSong.cover" />
-        <div v-else class="no-cover">🎵</div>
-      </q-avatar>
+      <!-- 控制栏 -->
+      <q-toolbar class="under-player">
+        <q-avatar size="70px" class="avatar-control" square>
+          <img v-if="currentSong?.cover" :src="currentSong.cover" />
+          <div v-else class="no-cover">🎵</div>
+        </q-avatar>
 
-      <div class="song-info">
-        <div class="song-name">{{ currentSong?.name }}</div>
-        <div class="song-artist" @click="search(currentSong?.artists)">{{ currentSong?.artists }}</div>
-        <div class="lyric-wrapper">
-        <div
-            class="current-lyric"
-            :key="currentLyricIndex"
-        >
-            {{ parsedLyric[currentLyricIndex]?.text || '♪ ♪ ♪' }}
+        <div class="song-info">
+          <div class="song-name">{{ currentSong?.name }}</div>
+          <div class="song-artist" @click="search(currentSong?.artists)">{{ currentSong?.artists }}</div>
+          <div class="lyric-wrapper">
+          <div
+              class="current-lyric"
+              :key="currentLyricIndex"
+          >
+              {{ parsedLyric[currentLyricIndex]?.text || '♪ ♪ ♪' }}
+          </div>
+          </div>
         </div>
+
+
+        <q-btn icon="skip_previous" flat @click="prev" />
+        <q-btn
+          :icon="playing ? 'pause' : 'play_arrow'"
+          flat
+          @click="toggle"
+        />
+        <q-btn icon="skip_next" flat @click="next"/>
+
+        <div class="q-ml-md">
+          {{ format(displayTime) }} / {{ format(duration) }}
         </div>
-      </div>
 
+        <q-space />
+        <q-btn icon="menu" flat @click="$emit('toggle-right-drawer')" />
+      </q-toolbar>
 
-      <q-btn icon="skip_previous" flat @click="prev" />
-      <q-btn
-        :icon="playing ? 'pause' : 'play_arrow'"
-        flat
-        @click="toggle"
-      />
-      <q-btn icon="skip_next" flat @click="next"/>
-
-      <div class="q-ml-md">
-        {{ format(displayTime) }} / {{ format(duration) }}
-      </div>
-
-      <q-space />
-      <q-btn icon="menu" flat @click="$emit('toggle-right-drawer')" />
-    </q-toolbar>
-
-  </q-footer>
+    </q-footer>
+  </div>
 </template>
 <script setup>
 import { ref, inject, computed } from 'vue'
