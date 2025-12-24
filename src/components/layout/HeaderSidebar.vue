@@ -72,10 +72,9 @@
     <!-- 设置弹窗 -->
     <q-dialog
       v-model="showSettings"
-      persistent
       transition-show="scale"
       transition-hide="scale"
-      @focusout="showSettings = false"
+      @close="showSettings = false"
     >
       <SettingsPanel />
     </q-dialog>

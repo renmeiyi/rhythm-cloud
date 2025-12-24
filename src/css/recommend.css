@@ -346,6 +346,17 @@
   padding-top: 20px;
 }
 
+.section-highqualityList-discovery{
+  display: grid;
+  border-radius: 18px;
+  background-color: #fff;
+  margin-left: 32px;
+  margin-right: 32px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
 .section-artistList{
   display: grid;
   border-radius: 18px;

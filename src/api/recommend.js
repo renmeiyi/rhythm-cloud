@@ -28,3 +28,10 @@ export function getArtistList () {
     }
   })
 }
+
+// 获取推荐歌单
+export function getRecommendPlayList() {
+  return apiClient.get("/personalized", {
+    limit: 20
+  });
+}

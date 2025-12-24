@@ -87,6 +87,15 @@
 
   async function getListplay (id) {
     const res = await getPlaylist(id)
+    if(description.value === ''){
+      description.value = res.playlist.description
+    }
+    if(tags.value === ''){
+      tags.value = res.playlist.tags
+    }
+    if(creatorName.value  === ''){
+      creatorName.value = res.playlist.creator.nickname
+    }
     playList.value = res.playlist.tracks
     playList.value = playList.value.filter(item => item.fee !== 1 && item.fee !== 4)
   }
