@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center" style="background-color: #f8f8f8;">
+  <q-page class="flex flex-center" style="background-color: var(--bg-bottom);">
     <div class="section-header-discover" >
       <h5>发现音乐</h5>
     </div>

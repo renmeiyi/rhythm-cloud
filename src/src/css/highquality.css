@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 .q-page {
-  background: #f5f5f7;
+  background: var(--bg-bottom);
   padding: 20px;
 }
 

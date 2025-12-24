@@ -1,5 +1,5 @@
 <template>
-  <q-page class="recommend-page" style="background-color: #f8f8f8;">
+  <q-page class="recommend-page" style="background-color: var(--bg-bottom);">
 
     <div class="section-categoryList">
         <!-- 标题 -->

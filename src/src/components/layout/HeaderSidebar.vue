@@ -1,6 +1,6 @@
 <template>
   <q-header elevated height-hint="98" class="app-header">
-    <q-toolbar class="toolbar-plain" style="background-color: #f8f8f8;">
+    <q-toolbar class="toolbar-plain" style="background-color: var(--bg-bottom);">
 
       <div style="width: 24px;"></div>
 

@@ -1,6 +1,6 @@
 <!-- 歌手详情 -->
 <template>
-  <q-page class="flex flex-center" style="background-color: #f8f8f8;">
+  <q-page class="flex flex-center" style="background-color: var(--bg-bottom);">
     歌手详情......
   </q-page>
 </template>

@@ -1,6 +1,6 @@
 <!-- 歌单详情 -->
 <template>
-  <q-page class="playlist-page" style="background-color: #f8f8f8;">
+  <q-page class="playlist-page" style="background-color: var(--bg-bottom);">
 
     <!-- 固定头部 -->
     <div class="playlist-header sticky-header">

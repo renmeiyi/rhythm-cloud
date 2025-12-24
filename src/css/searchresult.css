@@ -1,6 +1,6 @@
 .q-page-container,
 .q-page{ 
-  background-color: #f8f8f8;
+  background-color: var(--bg-bottom);
 }
 .search-page {
   max-width: 960px;
