@@ -19,7 +19,7 @@ function createWindow() {
     x: 0,
     y: 0,
 
-    width: 10,
+    width: 1010,
     height: 600,
     useContentSize: true,
     autoHideMenuBar: true,
