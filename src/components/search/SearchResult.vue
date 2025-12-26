@@ -79,7 +79,7 @@ watch(
 
     const res = await searchStore.Search(keyword.value)
     resultList.value = res
-    resultList.value = resultList.value.filter(item => item.fee !== 1 && item.fee !== 4)
+    // resultList.value = resultList.value.filter(item => item.fee !== 1 && item.fee !== 4)
 
     loading.value = false
 

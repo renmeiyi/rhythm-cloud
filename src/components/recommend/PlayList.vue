@@ -97,7 +97,7 @@
       creatorName.value = res.playlist.creator.nickname
     }
     playList.value = res.playlist.tracks
-    playList.value = playList.value.filter(item => item.fee !== 1 && item.fee !== 4)
+    // playList.value = playList.value.filter(item => item.fee !== 1 && item.fee !== 4)
   }
 
   async function playSong (item) {

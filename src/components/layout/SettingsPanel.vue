@@ -42,7 +42,7 @@
 <script setup>
 import { ref,onMounted } from 'vue'
 
-const primary = ref('#3b82f6')
+const primary = ref('#863bf7')
 const accent  = ref('#facc15')
 
 /* ========== 工具函数 ========== */

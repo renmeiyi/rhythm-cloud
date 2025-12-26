@@ -49,7 +49,7 @@
         </div>
 
         <q-space />
-        <q-btn icon="menu" flat @click="$emit('toggle-right-drawer')" />
+        <q-btn class="playList-menu" icon="menu" flat @click="$emit('toggle-right-drawer')" />
       </q-toolbar>
 
     </q-footer>

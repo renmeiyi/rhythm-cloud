@@ -1,5 +1,5 @@
 // electron-main.js (CommonJS)
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain,nativeImage  } = require('electron');
 const path = require('path');
 const os = require('os');
 
@@ -15,7 +15,11 @@ let mainWindow;
 function createWindow() {
   mainWindow = new BrowserWindow({
     icon: path.resolve(currentDir, 'icons/icon.png'), // 托盘图标
-    width: 1000,
+    //初始位置
+    x: 0,
+    y: 0,
+
+    width: 10,
     height: 600,
     useContentSize: true,
     autoHideMenuBar: true,
@@ -32,23 +36,62 @@ function createWindow() {
     }
   });
 
-    mainWindow.loadURL(process.env.APP_URL);
-  // if (process.env.DEV) {
-  //   if (process.env.DEBUGGING) {
-  //     mainWindow.webContents.openDevTools();
-  //   }
-  // } else {
-  //   mainWindow.loadFile(path.join(currentDir, 'index.html'));
-  //   // 生产环境禁止打开 DevTools
-  //   mainWindow.webContents.on('devtools-opened', () => {
-  //     mainWindow.webContents.closeDevTools();
-  //   });
-  // }
+
+
+  mainWindow.loadURL(process.env.APP_URL);
+  if (process.env.DEV) {
+    if (process.env.DEBUGGING) {
+      mainWindow.webContents.openDevTools();
+    }
+  } else {
+    mainWindow.loadFile(path.join(currentDir, 'index.html'));
+    // 生产环境禁止打开 DevTools
+    mainWindow.webContents.on('devtools-opened', () => {
+      mainWindow.webContents.closeDevTools();
+    });
+  }
 
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
+
+  mainWindow.once('ready-to-show', () => {
+    createThumbarButtons()
+  })
 }
+
+/**
+ * 缩略图工具栏
+ */
+function createThumbarButtons() {
+  if (!mainWindow) return
+
+  const makeIcon = (name) =>
+    nativeImage
+      .createFromPath(
+        path.join(currentDir, `assets/icon/thumbar/${name}.png`)
+      )
+      .resize({ width: 32, height: 32 })
+
+  mainWindow.setThumbarButtons([
+    {
+      tooltip: '上一首',
+      icon: makeIcon('prev'),
+      click: () => mainWindow.webContents.send('media-prev')
+    },
+    {
+      tooltip: '播放',
+      icon: makeIcon('play'),
+      click: () => mainWindow.webContents.send('media-play')
+    },
+    {
+      tooltip: '下一首',
+      icon: makeIcon('next'),
+      click: () => mainWindow.webContents.send('media-next')
+    }
+  ])
+}
+
 
 // App 初始化
 app.whenReady().then(createWindow);
